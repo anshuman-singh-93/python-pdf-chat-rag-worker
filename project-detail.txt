@@ -1,0 +1,14 @@
+1. user will call a api to send a query
+2. query will get enqueued
+3. a worker will pick up the query and process it
+4. result will be sent back to the user
+
+
+technical detail
+
+1. setup a fast api server
+2. expose 2 apis, one to accept the query that returns job id, second to get the result by job id
+3. use redis to enqueue the job
+4. setup a rq worker
+5. worker will process the job and store the result in redis with job id as key
+6. result api will fetch the result from redis and return it
